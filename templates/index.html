@@ -1,0 +1,95 @@
+{% include 'header.html' %}
+{% include 'about.html' %}
+
+<div class="container px-3 pt-2 {% if not top_10 %}mb-5{% endif %}">
+    <div class="row flex-lg-row-reverse align-items-start gy-4 py-4 mx-0 gx-2">
+        <div class="col-12 col-sm-12 col-lg-7">
+            <video autoplay muted loop playsinline class="video pb-2">
+                <source src="{{ url_for('static', filename='videos/animated-freljord.webm') }}" type="video/webm">
+                Your browser doesn't support .webm video format 😢
+            </video>
+            <div class="container d-flex justify-content-end align-items-center gap-2">
+                <p class="mb-0 small text-end">"Lofi Hip Hop Beat - Alley Cat" by AHOAMI – Copyright Free.</p>
+                <button id="toggle-music" class="btn btn-warning">Play music</button>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4">TOP 10</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4" style="width: 100%; max-width: 380px;">
+                <select id="tier" class="form-select fs-5 fw-semibold">
+                    <option value="CHALLENGER">Challenger</option>
+                    <option value="GRANDMASTER">Grandmaster</option>
+                    <option value="MASTER">Master</option>
+                    <option value="DIAMOND">Diamond</option>
+                    <option value="EMERALD">Emerald</option>
+                    <option value="PLATINUM">Platinum</option>
+                    <option value="GOLD">Gold</option>
+                    <option value="SILVER">Silver</option>
+                    <option value="BRONCE">Bronce</option>
+                    <option value="IRON">Iron</option>
+                </select>
+            </div>
+            <div id="top10-container" class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary mt-2"
+                 style="max-height: 350px; overflow-y: auto; width: 100%; max-width: 380px;">
+                <div class="list-group list-group-flush border-bottom">
+
+                    <div class="list-group">
+                        {% if top_10 %}
+                        {% for player in top_10 %}
+
+                        <div class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <img src="{{ player.profileIconUrl }}" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
+                            <strong> {{ loop.index }} </strong>
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">{{ player.gameName }} - #{{player.tagline }}</h6>
+                                    <p class="mb-0 opacity-75">League Points: {{ player.leaguePoints }}<br>
+                                        Wins: {{ player.wins }} - Losses: {{ player.losses }}</p>
+                                </div>
+                                <small class="opacity-50 text-nowrap"><strong>LVL: {{ player.summonerLevel }}</strong></small>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                        {% else %}
+
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <strong class="mb-1">Find them here!</strong>
+                            ⭐
+                        </div>
+                        <div class="col-10 mb-1 small">Just use the filters and choose a region — you'll see the player and the server
+                            status right away. Enjoy!
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4" style="width: 380px;">
+                <form id="hidden-form" action="/" method="POST">
+                    <input type="hidden" name="region" id="region-hidden">
+                    <input type="hidden" name="tier" id="tier-hidden">
+                    <input type="hidden" name="queue" id="queue-hidden">
+                    <input type="hidden" name="division" id="division-hidden">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2">Search</button>
+                </form>
+                <select id="queue" class="form-select fs-7 fw-semibold">
+                    <option value="RANKED_SOLO_5x5">Solo/Duo</option>
+                    <option value="RANKED_FLEX_SR">Flex</option>
+                </select>
+                <select id="division" class="form-select fs-7 fw-semibold">
+                    <option selected value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<iframe id="yt-audio" width="0" height="0" frameborder="0" allow="autoplay"></iframe>
+
+{% include 'footer.html' %}

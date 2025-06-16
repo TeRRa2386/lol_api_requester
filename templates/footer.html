@@ -1,0 +1,80 @@
+<div class="container {% if not top_10 %}pt-5 mt-4{% endif %}">
+
+    <footer id="scrollspyHeading5" class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="row align-items-center" style="width: 100%; margin: 0; padding-left: 0; padding-right: 0;">
+
+            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0">
+                <a href="https://github.com/TeRRa2386" class="me-3 text-decoration-none d-flex align-items-center" aria-label="Logo" target="_blank">
+                    <img src="static/images/logo_2.png" alt="Logo" width="40" height="40">
+                </a>
+                <div class="text-center text-md-start">
+                    <div>© {{ time }} TerraDev™. All rights reserved.</div>
+                    <div>Website created and maintained by Juan Silva.</div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+                <ul class="list-unstyled d-flex mb-0 align-items-center">
+                    <li class="ms-3">
+                        <a class=" text-primary bg-color:white" href="https://www.linkedin.com/in/juan-silva-palomino" aria-label="Linkedin"
+                           target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                 class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+</div>
+
+<!--  Music  -->
+
+<script>
+    let musicOn = true;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const iframe = document.getElementById("yt-audio");
+      const button = document.getElementById("toggle-music");
+
+      // Carga la música automáticamente
+      iframe.src = "https://www.youtube.com/embed/kHjObueyUxs?autoplay=1&loop=1&playlist=kHjObueyUxs";
+      button.innerText = "Stop music";
+
+      // Configura el botón
+      button.addEventListener("click", () => {
+        if (musicOn) {
+          iframe.src = "";
+          button.innerText = "Play music";
+        } else {
+          iframe.src = "https://www.youtube.com/embed/kHjObueyUxs?autoplay=1&loop=1&playlist=kHjObueyUxs";
+          button.innerText = "Stop music";
+        }
+        musicOn = !musicOn;
+      });
+    });
+</script>
+
+<!--  Hidden form  -->
+
+<script>
+    const hiddenForm = document.getElementById("hidden-form");
+
+    hiddenForm.addEventListener("submit", function (e) {
+      document.getElementById("region-hidden").value = document.getElementById("region").value;
+      document.getElementById("tier-hidden").value = document.getElementById("tier").value;
+      document.getElementById("queue-hidden").value = document.getElementById("queue").value;
+      document.getElementById("division-hidden").value = document.getElementById("division").value;
+    });
+</script>
+
+<!--  Bootstrap  -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+</body>
+</html>

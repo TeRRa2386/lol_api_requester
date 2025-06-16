@@ -1,0 +1,25 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.lol-title {
+    font-weight: 900;
+    color: gold;
+    text-shadow:
+        0    0    3px #000;
+    font-size: 2rem;
+}
+
+.img-round {
+    border-radius: 50%;
+}
+
+.video{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;/
+}

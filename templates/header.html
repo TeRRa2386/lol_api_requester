@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LOR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom">
+        <img src="{{ url_for('static', filename='images/poro.png') }}" class="p-2 me-2 img-round" width="80">
+        <a href="{{ url_for('index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <h1 class="h2"><strong>League of Rankings</strong></h1></a>
+        <div class="d-flex align-items-center gap-2">
+            {% if server_on %}
+            <i class="bi bi-circle-fill text-success fs-5"></i>
+            {% else %}
+            <div class="spinner-grow spinner-grow-sm align-self-center" role="status" style="min-width: 1rem; min-height: 1rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            {% endif %}
+            <select id="region" class="form-select form-select-sm" aria-label="Small select example">
+                <option selected value="NA1">North America (NA1)</option>
+                <option value="LA1">Latinoamérica Norte (LA1)</option>
+                <option value="LA2">Latinoamérica Sur (LA2)</option>
+            </select>
+            <button type="button" class="btn btn-outline-primary ms-2"
+                    data-bs-toggle="modal" data-bs-target="#modalAbout">
+                About
+            </button>
+        </div>
+    </header>
+</div>
