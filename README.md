@@ -47,4 +47,4 @@ The API key is loaded from a `.env` file using `python-dotenv`.
 ## Live Demo
 
 You can view the project live at:  
-[https://juan-silva-python-developer.onrender.com](https://juan-silva-python-developer.onrender.com)
+https://league-of-rankings.onrender.com
